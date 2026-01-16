@@ -6,6 +6,7 @@ import adminRoutes from './routes/admin.route'
 import statsRoutes from './routes/stats.route'
 import albumsRoutes from './routes/album.route'
 import { connectDb } from './lib/db';
+import { clerkMiddleware } from '@clerk/express';
 
 
 dotenv.config()
@@ -13,6 +14,7 @@ const app = express();
 const port = process.env.PORT
 app.use(express.json()) // Middleware to parse JSON request bodies (req.body)
 
+app.use(clerkMiddleware())
 app.use("/api/users", userRoutes)
 app.use("/api/auth", authRoutes)
 app.use("/api/admin", adminRoutes)
