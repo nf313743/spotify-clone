@@ -1,9 +1,9 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 
 
 const router = Router()
 
-router.get('/', (req, res) => {
+router.get('/', (req: Request, res: Response) => {
     res.send('User route with get method')
 })
 

@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { User } from "../models/user.model";
 
-export const authCallback = async (req: Request, res: Response) => {
+export const authCallback = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { id, firstName, lastName, imageUrl } = req.body;
 
@@ -19,7 +19,6 @@ export const authCallback = async (req: Request, res: Response) => {
 
     }
     catch (error) {
-        console.log('Error in auth callback:', error);
-        res.status(500).send({ success: false, message: 'Internal Server Error', error });
+        next(error);
     }
 }

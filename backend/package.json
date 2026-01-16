@@ -12,10 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "@clerk/express": "^1.7.62",
+    "@types/express-fileupload": "^1.5.1",
     "cloudinary": "^2.9.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "express-fileupload": "^1.5.2",
     "mongoose": "^9.1.4",
     "socket.io": "^4.8.3"
   },
