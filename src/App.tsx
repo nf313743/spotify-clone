@@ -1,11 +1,18 @@
-import { Button } from "@/components/ui/button"
+import './App.css'
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
+import { Button } from './components/ui/button';
 
 function App() {
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      <Button>Click me</Button>
-    </div>
-  )
+    <header>
+      <SignedOut>
+        <SignInButton><Button>Sign In</Button></SignInButton>
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+    </header>
+  );
 }
 
 export default App
