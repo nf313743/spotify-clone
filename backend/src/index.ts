@@ -9,10 +9,12 @@ import { connectDb } from './lib/db';
 import { clerkMiddleware } from '@clerk/express';
 import fileUpload from 'express-fileupload';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { Response, NextFunction, Request } from 'express';
 
 dotenv.config()
-const __dirname = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express();
 const port = process.env.PORT
 app.use(express.json()) // Middleware to parse JSON request bodies (req.body)
