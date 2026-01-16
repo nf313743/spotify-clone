@@ -5,6 +5,7 @@ import authRoutes from './routes/auth.route'
 import adminRoutes from './routes/admin.route'
 import statsRoutes from './routes/stats.route'
 import albumsRoutes from './routes/album.route'
+import songRoutes from './routes/song.route'
 import { connectDb } from './lib/db';
 import { clerkMiddleware } from '@clerk/express';
 import fileUpload from 'express-fileupload';
@@ -34,6 +35,7 @@ app.use("/api/auth", authRoutes)
 app.use("/api/admin", adminRoutes)
 app.use("/api/albums", albumsRoutes)
 app.use("/api/stats", statsRoutes)
+app.use("/api/songs", songRoutes)
 
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     console.error('Unhandled error:', error);
