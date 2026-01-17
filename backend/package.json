@@ -6,6 +6,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
+    "seed:songs": "node src/seeds/songs.ts",
+    "seed:albums": "node src/seeds/albums.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

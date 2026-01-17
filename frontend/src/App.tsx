@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { AuthCallbackPage } from "./pages/auth-callback/AuthCallbackPage";
 import { HomePage } from "./pages/home/HomePage";
 import { MainLayout } from "./layout/MainLayout";
+import { ChatPage } from "./pages/chat/ChatPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/auth-callback" element={<AuthCallbackPage />} />
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/chat" element={<ChatPage />} />
         </Route>
       </Routes>
     </>
