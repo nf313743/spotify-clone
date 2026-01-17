@@ -1,10 +1,51 @@
 import { Topbar } from "@/components/ui/Topbar";
-import React from "react";
+import { useMusicStore } from "@/stores/useMusicStore";
+import React, { useEffect } from "react";
+import { FeaturedSection } from "./components/FeaturedSection";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { SectionGrid } from "./components/SectionGrid";
 
 export const HomePage = () => {
+  const {
+    fetchFeaturedSongs,
+    fetchMadeForYou,
+    fetchTrendingSongs,
+    isLoading,
+    madeForYouSongs,
+    featuredSongs,
+    trendingSongs,
+  } = useMusicStore();
+
+  useEffect(() => {
+    (fetchFeaturedSongs(), fetchMadeForYou(), fetchTrendingSongs());
+  }, [fetchFeaturedSongs, fetchMadeForYou, fetchTrendingSongs]);
+
+  console.log(madeForYouSongs, featuredSongs, trendingSongs);
+
   return (
-    <div>
+    <main className="rounded-md overflow-hidden h-full bg-linear-to-b from-zinc-800 to-zinc-900">
       <Topbar />
-    </div>
+      <ScrollArea className="h-[calc(100vh-180px)]">
+        <div className="p-4 sm-6">
+          <h1 className="text-2xl sm:text-3xl font-bold mb-6">
+            Good afternoon
+          </h1>
+          <FeaturedSection />
+
+          <div className="space-y-8">
+            <SectionGrid
+              title="Made For You"
+              songs={madeForYouSongs}
+              isLoading={isLoading}
+            />
+            <SectionGrid
+              title="Trending"
+              songs={trendingSongs}
+              isLoading={isLoading}
+            />
+          </div>
+        </div>
+      </ScrollArea>
+    </main>
   );
 };

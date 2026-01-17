@@ -7,7 +7,7 @@ const router = Router()
 
 router.use(protectRoute, requireAdmin)
 
-router.get('check', checkAdmin)
+router.get('/check', checkAdmin)
 
 router.post('/songs', createSong)
 router.delete('/songs/:id', deleteSong)

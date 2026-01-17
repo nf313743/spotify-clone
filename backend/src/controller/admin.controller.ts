@@ -112,7 +112,7 @@ export const deleteAlbum = async (req: Request, res: Response, next: NextFunctio
 }
 
 export const checkAdmin = async (req: Request, res: Response) => {
-    res.status(200).json({ message: 'You have admin access' });
+    res.status(200).json({ admin: true,  message: 'You have admin access' });
 }
 
 async function uploadToCloudinary(audioFile: UploadedFile) {
