@@ -13,12 +13,19 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { Response, NextFunction, Request } from 'express';
 import cors from 'cors';
+import { createServer } from 'http';
+import { intializeSocket } from './lib/socket';
 
 dotenv.config()
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
 const port = process.env.PORT
+
+
+const httpServer = createServer(app)
+intializeSocket(httpServer)
+
 app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true,
@@ -49,7 +56,7 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     res.status(500).json({ message: message });
 })
 
-app.listen(port, () => {
+httpServer.listen(port, () => {
     console.log(`Server is running on port 234 ${port}`)
     connectDb()
 }) 
